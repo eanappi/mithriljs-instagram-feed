@@ -1,7 +1,20 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  min-width:100%;
-  min-height:100%;
-  font: Arial 14px;
+/* Navbar*/
+.nav-wrapper a {
+  color: #424242;
+}
+
+/* Footer */
+footer {
+  color: #161616;
+}
+
+/* block-description-header */
+.block-description-header {
+  min-height: 20rem;
+}
+.block-description-header h1 {
+  font-size: 3.5rem;
+}
+.block-description-header h5 {
+  font-size: 2rem;
 }
