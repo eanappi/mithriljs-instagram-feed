@@ -1,9 +1,9 @@
 const BlockInstagramFeed = {
-  posts: {},
-  oninit() {
+  posts: [],
+  oninit(vnode) {
     m.request({
       method: "GET",
-      url: "https://www.instagram.com/roxanakovi/",
+      url: `https://www.instagram.com/${vnode.attrs.userId}/`,
       deserialize: function(value) {
         let htmlString = value.split("_sharedData = ")[1]
         					  .split(";</script>")[0]
@@ -13,18 +13,30 @@ const BlockInstagramFeed = {
       }
     })
     .then(function(result) {
-      this.posts = result
-      // m.render(document.body, 
-      //   result.map((post) => {
-      // 	  return m("div", [
-      //       m("img", {src: post.node.display_url}),
-      //       m("p", post.node.edge_media_to_caption.edges[0].node.text)
-      //     ])  
-      // 	})
-      // )
+      BlockInstagramFeed.posts = result
     })
   },
-  view() {
-    
+  view(vnode) {
+    return m("div.row", BlockInstagramFeed.posts.map((post) => {
+        return m("div.col.s6.m4.l4", 
+          m("div.card.small",
+            [
+              m("div.card-image",
+                [
+                  m(`img[src='${post.node.display_url}']`),
+                  m("span.card-title", 
+                    "Card Title"
+                  )
+                ]
+              ),
+              m("div.card-content", 
+                m("p", 
+                  `${post.node.edge_media_to_caption.edges[0].node.text}`
+                )
+              )
+            ]
+          )
+        )
+    }))
   }
 }

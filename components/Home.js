@@ -4,7 +4,8 @@ const Home = {
       m(BlockDescription, {
         "title": "Instagram gallery",
         "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      })
+      }),
+      m(BlockInstagramFeed, {userId: "roxanakovi"})
     ])
   }
 }
