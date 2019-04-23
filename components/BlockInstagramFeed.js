@@ -1,5 +1,5 @@
 const BlockInstagramFeed = {
-  posts: [],
+  posts: null,
   oninit(vnode) {
     m.request({
       method: "GET",
@@ -17,7 +17,8 @@ const BlockInstagramFeed = {
     })
   },
   view(vnode) {
-    return m("div.row", BlockInstagramFeed.posts.map((post) => {
+    return m("div.row", BlockInstagramFeed.posts ? [
+      BlockInstagramFeed.posts.map((post) => {
         return m("div.col.s6.m4.l4", 
           m("div.card.small",
             [
@@ -37,6 +38,8 @@ const BlockInstagramFeed = {
             ]
           )
         )
-    }))
+      })
+    ] : m(Loading)
+    )
   }
 }
