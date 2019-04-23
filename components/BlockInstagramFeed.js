@@ -25,7 +25,7 @@ const BlockInstagramFeed = {
                 [
                   m(`img[src='${post.node.display_url}']`),
                   m("span.card-title", 
-                    "Card Title"
+                    ""
                   )
                 ]
               ),
