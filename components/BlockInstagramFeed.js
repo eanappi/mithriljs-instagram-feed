@@ -30,7 +30,7 @@ const BlockInstagramFeed = {
                 ]
               ),
               m("div.card-content", 
-                m("p", 
+                m("p.truncate", 
                   `${post.node.edge_media_to_caption.edges[0].node.text}`
                 )
               )
